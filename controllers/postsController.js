@@ -39,7 +39,7 @@ const getAllPosts = async (req, res) => {
         
         const postsWithImageUrls = posts.map(post => ({
             ...post.toObject(),
-            coverImageUrl: post.coverImage ? `${req.protocol}://${req.get('host')}/${post.coverImage}` : null
+            coverImageUrl: post.coverImage ? `${post.coverImage.replace('\\' , '/')}` : null
         }));
 
         res.status(200).json({
